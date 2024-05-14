@@ -1,6 +1,6 @@
-# lsst-sqre/build-and-push-to-rubincr
+# lsst-ts/build-and-push-to-rubincr
 
-A composite GitHub Actions action that builds a Docker image, tags it based on the current Git branch/tag, and pushes it to rubin-cr.lsst.org.
+A composite GitHub Actions action that builds a Docker image, tags it based on the current Git branch/tag, and pushes it to rubin-cr.lsst.org. Heavily borrowed from [SQuaRe's `build-and-push-ghcr`](https://github.com/lsst-sqre/build-and-push-to-ghcr).
 
 ## Usage
 
