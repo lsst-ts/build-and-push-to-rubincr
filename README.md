@@ -32,14 +32,14 @@ jobs:
       - uses: lsst-ts/build-and-push-to-rubincr@v1
         id: build
         with:
-          image: ${{ github.repository }} # e.g. lsst-sqre/safirdemo
+          image: package-name  # Replace with correct package name
           username: ${{ secrets.RUBINCR_USERNAME }}
           password: ${{ secrets.RUBINCR_PASSWORD }}
 
-      - run: echo Pushed rubin-cr.lsst.org/${{ github.repository }}:${{ steps.build.outputs.tag }}
+      - run: echo Pushed rubin-cr.lsst.org/${{ inputs.image }}:${{ steps.build.outputs.tag }}
 ```
 
-By default, rubin-cr.lsst.org packages are named after the GitHub repository.
+rubin-cr.lsst.org packages are named after the GitHub repository.
 To automatically set that, the above example uses the context variable `${{ github.repository }}` as the image name.
 
 ## Action reference
