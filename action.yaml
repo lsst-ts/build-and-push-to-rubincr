@@ -57,8 +57,8 @@ runs:
       if: fromJSON(inputs.push) == true
       with:
         registry: rubin-cr.lsst.org
-        username: ${{ secrets.RUBINCR_USERNAME }}
-        password: ${{ secrets.RUBINCR_PASSWORD }}
+        username: ${{ inputs.username }}
+        password: ${{ inputs.password }}
 
     - name: Build and push
       id: build
