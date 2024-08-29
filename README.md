@@ -1,6 +1,6 @@
 # lsst-ts/build-and-push-to-rubincr
 
-A composite GitHub Actions action that builds a Docker image, tags it based on the current Git branch/tag, and pushes it to rubin-cr.lsst.org. Heavily borrowed from [SQuaRe's `build-and-push-ghcr`](https://github.com/lsst-sqre/build-and-push-to-ghcr).
+A composite GitHub Actions action that builds a Docker image, tags it based on the current Git branch/tag, and pushes it to rubin-cr.lsst.org. Heavily borrowed from [SQuaRe's `build-and-push-to-ghcr`](https://github.com/lsst-sqre/build-and-push-to-ghcr).
 
 ## Usage
 
@@ -49,9 +49,9 @@ To automatically set that, the above example uses the context variable `${{ gith
 - `image` (string, required) the name of the image to build and push. The image does not include the registry (`rubin-cr.lsst.org/`) or the tag.
   For example, the image input for `rubin-cr.lsst.org/repo:tag` image is `repo`.
 
-- `username` (string, required) the username to authenticate with for pushing to rubin-cr.lsst.org. Default is `${{ secrets.RUBINCR_USERNAME }}`.
+- `username` (string, required) the username to authenticate with for pushing to rubin-cr.lsst.org. Use `${{ secrets.RUBINCR_USERNAME }}`.
 
-- `password` (string, required) the password to authenticate with for pushing to rubin-cr.lsst.org. Default is `${{ secrets.RUBINCR_PASSWORD }}`.
+- `password` (string, required) the password to authenticate with for pushing to rubin-cr.lsst.org. Use `${{ secrets.RUBINCR_PASSWORD }}`.
 
 - `dockerfile` (string, optional) the path to the Dockerfile to build. Default is `Dockerfile`.
 
