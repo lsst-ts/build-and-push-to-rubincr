@@ -1,7 +1,7 @@
-name: "Build and push to rubin-cr.lsst.org"
+name: "Build and push to rubincr.lsst.org"
 description: >
   This composite action builds a Docker image, tags it with the current git
-  branch/tag ref, and pushes it to rubin-cr.lsst.org.
+  branch/tag ref, and pushes it to rubincr.lsst.org.
 inputs:
   username:
     description: "The username to use for authentication to the container registry."
@@ -21,7 +21,7 @@ inputs:
     required: false
     default: "."
   push:
-    description: "Whether to push the image to rubin-cr.lsst.org."
+    description: "Whether to push the image to rubincr.lsst.org."
     required: false
     default: "true"
   cache-from:
@@ -38,7 +38,7 @@ outputs:
     value: ${{ steps.tag.outputs.tag }}
   fully_qualified_image_digest:
     description: "A complete, unique, immutable identifier for the built image, including the registry and digest"
-    value: "rubin-cr.lsst.org/${{ inputs.image }}@${{ steps.build.outputs.digest }}"
+    value: "rubincr.lsst.org/${{ inputs.image }}@${{ steps.build.outputs.digest }}"
 
 runs:
   using: "composite"
@@ -56,7 +56,7 @@ runs:
       uses: docker/login-action@v3
       if: fromJSON(inputs.push) == true
       with:
-        registry: rubin-cr.lsst.org
+        registry: rubincr.lsst.org
         username: ${{ inputs.username }}
         password: ${{ inputs.password }}
 
@@ -68,6 +68,6 @@ runs:
         file: "${{ inputs.dockerfile }}"
         push: ${{ fromJSON(inputs.push) == true }}
         tags: |
-          rubin-cr.lsst.org/${{ inputs.image }}:${{ steps.tag.outputs.tag }}
+          rubincr.lsst.org/${{ inputs.image }}:${{ steps.tag.outputs.tag }}
         cache-from: ${{ inputs.cache-from }}
         cache-to: ${{ inputs.cache-to }}
